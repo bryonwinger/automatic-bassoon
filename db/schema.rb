@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225171216) do
+ActiveRecord::Schema.define(version: 20170225181428) do
 
   create_table "circuits", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "difficulty"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.integer  "{:index=>true}_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_circuits_on_user_id"
-    t.index ["{:index=>true}_id"], name: "index_circuits_on_{:index=>true}_id"
   end
 
   create_table "circuits_effect_types", id: false, force: :cascade do |t|
@@ -33,6 +31,13 @@ ActiveRecord::Schema.define(version: 20170225171216) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_circuit_favorites", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "circuit_id"
+    t.index ["circuit_id"], name: "index_user_circuit_favorites_on_circuit_id"
+    t.index ["user_id"], name: "index_user_circuit_favorites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
