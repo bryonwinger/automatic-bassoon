@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @circuit.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @circuit.description %>
+</p>
+
+<p>
+  <strong>Difficulty:</strong>
+  <%= @circuit.difficulty %>
+</p>
+
+<%= link_to 'Edit', edit_circuit_path(@circuit) %> |
+<%= link_to 'Back', circuits_path %>

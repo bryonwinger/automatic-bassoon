@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Circuits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Difficulty</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @circuits.each do |circuit| %>
+      <tr>
+        <td><%= circuit.name %></td>
+        <td><%= circuit.description %></td>
+        <td><%= circuit.difficulty %></td>
+        <td><%= link_to 'Show', circuit %></td>
+        <td><%= link_to 'Edit', edit_circuit_path(circuit) %></td>
+        <td><%= link_to 'Destroy', circuit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Circuit', new_circuit_path %>
