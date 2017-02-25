@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Default EffectTypes
+fx_types = %w{Overdrive Distortion Fuzz Boost Modulation Chorus Flanger Phaser
+  Tremolo Vibrato Rotary Delay Reverb Compression Equalization Pitch Octave}
+fx_types.each do |fx|
+  EffectType.create(name: fx)
+end
