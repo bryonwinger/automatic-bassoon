@@ -1,7 +1,52 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+overdrive:
+  name: Overdrive
 
-two:
-  name: MyString
+distortion:
+  name: Distortion
+
+fuzz:
+  name: Fuzz
+
+boost:
+  name: Boost
+
+modulation:
+  name: Modulation
+
+chorus:
+  name: Chorus
+
+flanger:
+  name: Flanger
+
+phaser:
+  name: Phaser
+
+tremolo:
+  name: Tremolo
+
+vibrato:
+  name: Vibrato
+
+rotary:
+  name: Rotary
+
+delay:
+  name: Delay
+
+reverb:
+  name: Reverb
+
+compression:
+  name: Compression
+
+equalization:
+  name: Equalization
+
+pitch:
+  name: Pitch
+
+octave:
+  name: Octave

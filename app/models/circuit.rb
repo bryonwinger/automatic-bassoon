@@ -4,5 +4,10 @@ class Circuit < ApplicationRecord
 
   # Favorites
   has_many :user_circuit_favorites
-  has_many :favorite_users, through: :user_circuit_favorites, source: :user
+  has_many :favorited_users, through: :user_circuit_favorites, source: :user
+
+  validates :name, presence: true
+  validates :difficulty, presence: true
+  validates :submitter, presence: true
+  validates :effect_types, length: { minimum: 1 }
 end
