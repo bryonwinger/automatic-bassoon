@@ -1,13 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  email: email1@company.com
-  first_name: First
-  last_name: Last
+dallas:
+  email: a_dallas@nostromo.net
+  first_name: Arthur
+  last_name: Dallas
   active: true
 
-two:
-  email: email2@company.net
-  first_name: Firston
-  last_name: Lastly
+ripley:
+  email: e_ripley@protagonist.edu
+  first_name: Ellen
+  last_name: Ripley
+  active: true
+
+lambert:
+  email: j_lambert@nostromo.net
+  first_name: Joan
+  last_name: Lambert
+  active: true
+
+brett:
+  email: s_brett@nostromo.net
+  first_name: Samuel
+  last_name: Brett
+  active: true
+
+kane:
+  email: g_kane@derelict.com
+  first_name: Gilbert
+  last_name: Kane
+  active: true
+
+ash:
+  email: just_ash@nostromo.net
+  first_name: Ash
+  last_name: Ash
+  active: true
+
+parker:
+  email: d_parker@derelict.com
+  first_name: Dennis
+  last_name: Parker
+  active: true
+
+jones:
+  email: jones_the_cat@nostromo.net
+  first_name: Jones
+  last_name: The Cat
   active: true

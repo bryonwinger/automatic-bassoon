@@ -1,15 +1,36 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  difficulty: 1
-  submitter: user(:one)
-  effect_types: effect_types(:overdrive)
+overdrive:
+  name: Green Screamer
+  description: Tubescreamer clone
+  difficulty: 3
+  submitter: ripley
+  effect_types: overdrive
 
-two:
-  name: MyString
-  description: MyText
-  difficulty: 1
-  submitter: user(:two)
-  effect_types: effect_types(:delay)
+delay:
+  name: Digipeat
+  description: A straight-forward bucket brigade based delay
+  difficulty: 5
+  submitter: dallas
+  effect_types: delay
+
+fuzz:
+  name: Vermin
+  description: Turbo Rat clone
+  difficulty: 2
+  submitter: lambert
+  effect_types: fuzz
+
+comp:
+  name: Squeezie
+  description: Simple Opto Compressor
+  difficulty: 2
+  submitter: lambert
+  effect_types: compression
+
+multimod:
+  name: Swirly MultiMod
+  description: 4-in-1 modulation box
+  difficulty: 5
+  submitter: ash
+  effect_types: [chorus, phaser, flanger, vibrato]

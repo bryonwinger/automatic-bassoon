@@ -2,12 +2,10 @@ require 'test_helper'
 
 class CircuitTest < ActiveSupport::TestCase
   setup do
-    @circuit = circuits(:one)
-    @circuit.submitter = users(:one)
+    @circuit = circuits(:overdrive)
     @fx1 = effect_types(:overdrive)
     @fx2 = effect_types(:compression)
     @fx3 = effect_types(:delay)
-    @circuit.effect_types << @fx1
   end
 
   test "simple validation" do
@@ -16,7 +14,7 @@ class CircuitTest < ActiveSupport::TestCase
 
   test "required attrs" do
     %w{name difficulty submitter}.each do |attr|
-      circuit = circuits(:one)
+      circuit = circuits(:fuzz)
       circuit.__send__("#{attr}=", nil)
       assert_equal false, circuit.valid?
     end

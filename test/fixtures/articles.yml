@@ -1,11 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
-  author: users(:one)
+  title: The Magic of Capacitors
+  body: They are magic.  That is all.
+  author: dallas
 
 two:
-  title: MyString
-  body: MyText
-  author: users(:one)
+  title: Voltage Dividers
+  body: Two is better than one, except when it isn't.
+  author: ripley
+
+three:
+  title: Cheap Switches and Why I Use Them
+  body: It's because I'm cheap.
+  author: lambert
+
+four:
+  title: Painting Enclosures
+  body: Or how to really make something look terrible in 4 easy steps.
+  author: brett
+
+five:
+  title: True Bypass or Buffers?
+  body: They both work.
+  author: kane
+
+six:
+  title: Why Doesn't This Work?
+  body: Because it's broken.
+  author: ripley

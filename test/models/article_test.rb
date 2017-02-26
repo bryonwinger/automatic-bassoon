@@ -3,7 +3,6 @@ require 'test_helper'
 class ArticleTest < ActiveSupport::TestCase
   setup do
     @article = articles(:one)
-    @article.author = users(:one)
   end
 
   test "simple validation" do
