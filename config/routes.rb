@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :articles
   resources :circuits
   resources :users
+  resources :effect_types
 end
