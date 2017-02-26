@@ -2,7 +2,12 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = @ripley
+    @new_user = {
+      email: "new_user@mail.net",
+      first_name: "Firstly",
+      last_name: "Lastly"
+    }
   end
 
   test "should get index" do
@@ -17,10 +22,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { email: @user.email, first_name: @user.first_name, last_name: @user.last_name } }
+      post users_url, params: { user: @new_user }
     end
 
     assert_redirected_to user_url(User.last)
+  end
+
+  test "email must be unique" do
+    User.create(@new_user)
+    assert_no_difference('User.count') do
+      post users_url, params: { user: @new_user }
+    end
+
+    assert flash[:alert]
+    assert flash[:alert].messages.keys.include? :email 
+    assert flash[:alert].full_messages.first.include? "taken" 
+    # assert_redirected_to new_user_url(User.last)
   end
 
   test "should show user" do

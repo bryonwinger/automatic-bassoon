@@ -10,6 +10,7 @@ class ActiveSupport::TestCase
   setup do
     @ripley = users(:ripley)
     @parker = users(:parker)
+    @ash = users(:ash)
 
     @squeezie = circuits(:squeezie)
     @greenbox = circuits(:greenbox)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tossers
   resources :articles
   resources :circuits
   resources :users
