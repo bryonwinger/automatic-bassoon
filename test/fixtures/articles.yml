@@ -4,28 +4,34 @@ article_one:
   title: The Magic of Capacitors
   body: They are magic.  That is all.
   author: dallas
+  documentable: greenbox (Circuit)
 
 article_two:
   title: Voltage Dividers
   body: Two is better than one, except when it isn't.
   author: ripley
+  documentable: orangebox (Circuit)
 
 article_three:
   title: Cheap Switches and Why I Use Them
   body: It's because I'm cheap.
   author: lambert
+  documentable: vermin (Circuit)
 
 article_four:
   title: Painting Enclosures
   body: Or how to really make something look terrible in 4 easy steps.
   author: brett
+  documentable: digipeat (Circuit)
 
 article_five:
   title: True Bypass or Buffers?
   body: They both work.
   author: kane
+  documentable: swirly (Circuit)
 
 article_six:
   title: Why Doesn't This Work?
   body: Because it's broken.
   author: ripley
+  documentable: squeezie (Circuit)

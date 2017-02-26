@@ -6,10 +6,12 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test "required attrs" do
-    %w{title body author}.each do |attr|
-      article = articles(:one)
+    %w{title body author documentable}.each do |attr|
+      article = articles(:article_one)
       article.__send__("#{attr}=", nil)
       assert_equal false, article.valid?
+      assert_not article.errors.empty?
+      assert article.errors.keys.include? attr.to_sym
     end
   end
 
