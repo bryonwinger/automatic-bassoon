@@ -1,36 +1,29 @@
 require 'test_helper'
 
 class CircuitTest < ActiveSupport::TestCase
-  setup do
-    @circuit = circuits(:overdrive)
-    @fx1 = effect_types(:overdrive)
-    @fx2 = effect_types(:compression)
-    @fx3 = effect_types(:delay)
-  end
-
   test "simple validation" do
-    assert @circuit.valid?
+    assert @orangebox.valid?
   end
 
   test "required attrs" do
     %w{name difficulty submitter}.each do |attr|
-      circuit = circuits(:fuzz)
+      circuit = circuits(:vermin)
       circuit.__send__("#{attr}=", nil)
       assert_equal false, circuit.valid?
     end
   end
 
   test "must have at least one effect type" do
-    @circuit.effect_types.clear
-    assert_equal false, @circuit.valid?
+    @orangebox.effect_types.clear
+    assert_equal false, @orangebox.valid?
   end
 
   test "can have multiple effect types" do
-    @circuit.effect_types << @fx1
-    assert @circuit.valid?
-    @circuit.effect_types << @fx2
-    assert @circuit.valid?
-    @circuit.effect_types << @fx3
-    assert @circuit.valid?
+    @orangebox.effect_types << @overdrive
+    assert @orangebox.valid?
+    @orangebox.effect_types << @compression
+    assert @orangebox.valid?
+    @orangebox.effect_types << @delay
+    assert @orangebox.valid?
   end
 end

@@ -1,34 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-overdrive:
+greenbox:
   name: Green Screamer
   description: Tubescreamer clone
   difficulty: 3
   submitter: ripley
   effect_types: overdrive
 
-delay:
+orangebox:
+  name: Orange Orange
+  description: Orange Distortion
+  difficulty: 3
+  submitter: jones
+  effect_types: distortion
+
+digipeat:
   name: Digipeat
   description: A straight-forward bucket brigade based delay
   difficulty: 5
   submitter: dallas
   effect_types: delay
 
-fuzz:
+vermin:
   name: Vermin
   description: Turbo Rat clone
   difficulty: 2
   submitter: lambert
   effect_types: fuzz
 
-comp:
+squeezie:
   name: Squeezie
   description: Simple Opto Compressor
   difficulty: 2
   submitter: lambert
   effect_types: compression
 
-multimod:
+swirly:
   name: Swirly MultiMod
   description: 4-in-1 modulation box
   difficulty: 5

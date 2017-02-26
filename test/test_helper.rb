@@ -7,4 +7,21 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  setup do
+    @ripley = users(:ripley)
+    @parker = users(:parker)
+
+    @squeezie = circuits(:squeezie)
+    @greenbox = circuits(:greenbox)
+    @orangebox = circuits(:orangebox)
+    @digipeat = circuits(:digipeat)
+    @vermin = circuits(:vermin)
+
+    @article = articles(:one)
+    @article2 = articles(:two)
+
+    @overdrive = effect_types(:overdrive)
+    @compression = effect_types(:compression)
+    @delay = effect_types(:delay)
+  end
 end

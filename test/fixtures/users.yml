@@ -41,6 +41,7 @@ parker:
   first_name: Dennis
   last_name: Parker
   active: true
+  favorite_circuits: [fuzz]
 
 jones:
   email: jones_the_cat@nostromo.net

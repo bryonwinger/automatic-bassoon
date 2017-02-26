@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  setup do
-    @article = articles(:one)
-  end
-
   test "simple validation" do
     assert @article.valid?
   end
