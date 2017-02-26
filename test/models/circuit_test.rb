@@ -13,17 +13,34 @@ class CircuitTest < ActiveSupport::TestCase
     end
   end
 
+  test "name must be unique" do
+    new_circuit = Circuit.new
+    new_circuit.name = @orangebox.name
+    assert_not new_circuit.valid?
+    assert_not new_circuit.errors.empty?
+    assert new_circuit.errors.keys.include? :name
+  end
+
   test "must have at least one effect type" do
     @orangebox.effect_types.clear
     assert_equal false, @orangebox.valid?
   end
 
-  test "can have multiple effect types" do
+  test "can add multiple effect types" do
     @orangebox.effect_types << @overdrive
     assert @orangebox.valid?
+    assert @orangebox.effect_types.include?(@overdrive)
     @orangebox.effect_types << @compression
     assert @orangebox.valid?
+    assert @orangebox.effect_types.include?(@compression)
     @orangebox.effect_types << @delay
     assert @orangebox.valid?
+    assert @orangebox.effect_types.include?(@delay)
+  end
+
+  test "effect types will not duplicate" do
+    num = @orangebox.effect_types.count
+    @orangebox.effect_types << @distortion
+    assert_equal num, @orangebox.effect_types.count
   end
 end

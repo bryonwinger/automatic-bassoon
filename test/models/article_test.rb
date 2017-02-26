@@ -12,4 +12,12 @@ class ArticleTest < ActiveSupport::TestCase
       assert_equal false, article.valid?
     end
   end
+
+  test "title must be unique" do
+    new_article = Article.new
+    new_article.title = @article.title
+    assert_not new_article.valid?
+    assert_not new_article.errors.empty?
+    assert new_article.errors.keys.include? :title
+  end
 end

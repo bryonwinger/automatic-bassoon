@@ -21,6 +21,7 @@ class ActiveSupport::TestCase
     @article2 = articles(:two)
 
     @overdrive = effect_types(:overdrive)
+    @distortion = effect_types(:distortion)
     @compression = effect_types(:compression)
     @delay = effect_types(:delay)
   end
