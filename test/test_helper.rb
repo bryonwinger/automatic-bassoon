@@ -17,11 +17,12 @@ class ActiveSupport::TestCase
     @digipeat = circuits(:digipeat)
     @vermin = circuits(:vermin)
 
-    @article = articles(:one)
-    @article2 = articles(:two)
+    @article = articles(:article_one)
+    @article2 = articles(:article_two)
 
     @overdrive = effect_types(:overdrive)
     @distortion = effect_types(:distortion)
+    @fuzz = effect_types(:fuzz)
     @compression = effect_types(:compression)
     @delay = effect_types(:delay)
   end

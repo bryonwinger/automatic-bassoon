@@ -38,9 +38,23 @@ class CircuitTest < ActiveSupport::TestCase
     assert @orangebox.effect_types.include?(@delay)
   end
 
-  test "effect types will not duplicate" do
+  test "effect types are distinct" do
+    @orangebox.effect_types << @fuzz
     num = @orangebox.effect_types.count
-    @orangebox.effect_types << @distortion
+    @orangebox.effect_types << @fuzz
     assert_equal num, @orangebox.effect_types.count
+  end
+
+  test "can add articles" do
+    assert @vermin.articles.empty?
+    @vermin.articles << @article
+    assert_not @vermin.articles.empty?
+  end
+
+  test "articles are distinct" do
+    @vermin.articles << @article
+    num = @vermin.articles.count
+    @vermin.articles << @article
+    assert_equal num, @vermin.articles.count
   end
 end

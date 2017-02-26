@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225204624) do
+ActiveRecord::Schema.define(version: 20170226151032) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "documentable_id"
+    t.string   "documentable_type"
+    t.index ["documentable_type", "documentable_id"], name: "index_articles_on_documentable_type_and_documentable_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
