@@ -18,8 +18,9 @@ class ActiveSupport::TestCase
     @digipeat = circuits(:digipeat)
     @vermin = circuits(:vermin)
 
-    @article = articles(:article_one)
-    @article2 = articles(:article_two)
+    @article_one = articles(:article_one)
+    @article_two = articles(:article_two)
+    @article_three = articles(:article_three)
 
     @overdrive = effect_types(:overdrive)
     @distortion = effect_types(:distortion)

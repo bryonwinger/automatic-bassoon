@@ -47,14 +47,14 @@ class CircuitTest < ActiveSupport::TestCase
 
   test "can add articles" do
     num = @vermin.articles.count
-    @vermin.articles << @article
+    @vermin.articles << @article_one
     assert_equal num + 1, @vermin.articles.count
   end
 
   test "articles are distinct" do
-    @vermin.articles << @article
+    @vermin.articles << @article_one
     num = @vermin.articles.count
-    @vermin.articles << @article
+    @vermin.articles << @article_one
     assert_equal num, @vermin.articles.count
   end
 end

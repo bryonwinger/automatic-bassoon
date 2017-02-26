@@ -62,13 +62,32 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:article).permit(:references, :title, :body)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def article_params
+    p = params.require(:article).permit(:title, :body)
+    ex_params = params.require(:article).permit(:author_id, :documentable_id, :documentable_type)
+    if !ex_params[:author_id].blank?
+      p[:author] = User.find(ex_params[:author_id])
     end
+    p[:documentable] = get_documentable
+    return p
+  end
+
+  def get_documentable
+    @documentable = if @article && @article.documentable
+      @article.documentable
+    else
+      p = params.require(:article).permit(:documentable_id, :documentable_type)
+      if p[:documentable_id] && p[:documentable_type]
+        p[:documentable_type].classify.constantize.find(p[:documentable_id])
+      else
+        nil
+      end
+    end
+  end
 end
