@@ -7,7 +7,7 @@ class CircuitsControllerTest < ActionDispatch::IntegrationTest
       name: "Krispy Drive",
       description: "Deep fried Klon clone",
       difficulty: 1,
-      submitter_id: @ripley.id,
+      user_id: @ripley.id,
       effect_type_ids: @overdrive.id
     }
   end
@@ -63,7 +63,7 @@ class CircuitsControllerTest < ActionDispatch::IntegrationTest
     orig_submitter = @circuit.submitter
     patch circuit_url(@circuit), params: {
       circuit: {
-        submitter_id: @ash.id
+        user_id: @ash.id
       }
     }
 

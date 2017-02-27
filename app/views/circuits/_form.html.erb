@@ -23,7 +23,20 @@
 
   <div class="field">
     <%= f.label :difficulty %>
-    <%= f.number_field :difficulty %>
+    <% d_opts = (1..5).map {|d| [d.to_s, d] } %>
+    <%#= select_tag(:difficulty, options_for_select(d_opts)) %>
+    <%= f.select(:difficulty, d_opts) %>
+    <%#= f.collection_select(:difficulty, d_opts, :id, :num) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :effect_types %>
+    <%= f.collection_select(:effect_type_ids, EffectType.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :submitter %>
+    <%= f.collection_select(:user_id, User.all, :id, :email) %>
   </div>
 
   <div class="actions">
