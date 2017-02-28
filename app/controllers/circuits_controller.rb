@@ -24,7 +24,7 @@ class CircuitsController < ApplicationController
   # POST /circuits
   # POST /circuits.json
   def create
-    @circuit = Circuit.new(create_params)
+    @circuit = Circuit.new(circuit_params)
     respond_to do |format|
       if @circuit.save
         format.html { redirect_to @circuit, notice: 'Circuit was successfully created.' }
@@ -41,7 +41,7 @@ class CircuitsController < ApplicationController
   # PATCH/PUT /circuits/1.json
   def update
     respond_to do |format|
-      if @circuit.update(update_params)
+      if @circuit.update(circuit_params)
         format.html { redirect_to @circuit, notice: 'Circuit was successfully updated.' }
         format.json { render :show, status: :ok, location: @circuit }
       else
@@ -63,40 +63,30 @@ class CircuitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_circuit
-      @circuit = Circuit.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_circuit
+    @circuit = Circuit.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def circuit_params
-      params.require(:circuit).permit(:name, :description, :difficulty, :submitter_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def circuit_params
+    params.require(:circuit).permit(
+      :name, :description, :difficulty, :submitter_id
+    ).merge(effect_type_params)
+  end
 
-    def create_params
-      p = circuit_params
-      extra_params = params.require(:circuit).permit(:effect_type_ids)
-      p[:effect_types] = []
-      fx_ids = extra_params[:effect_type_ids].split(",")
+  def effect_type_params
+    ids_string = params[:circuit][:effect_type_ids]
+    if ids_string
+      p = {effect_types: []}
+      fx_ids = ids_string.split(",")
       fx_ids.each do |fx_id|
-        effect_type = EffectType.find(fx_id)
-        p[:effect_types].append(effect_type)
+        fx_type = EffectType.find(fx_id)
+        p[:effect_types].append(fx_type) if fx_type
       end
-      return p
+      p
+    else
+      {}
     end
-
-    def update_params
-      p = circuit_params
-      extra_params = params.require(:circuit).permit(:effect_type_ids)
-      
-      if !extra_params[:effect_type_ids].blank?
-        p[:effect_types] = []
-        fx_ids = extra_params[:effect_type_ids].split(",")
-        fx_ids.each do |fx_id|
-          effect_type = EffectType.find(fx_id) || "nilly"
-          p[:effect_types].append(effect_type)
-        end
-      end
-      return p
-    end
+  end
 end
