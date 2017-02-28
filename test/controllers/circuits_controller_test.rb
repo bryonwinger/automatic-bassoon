@@ -7,7 +7,7 @@ class CircuitsControllerTest < ActionDispatch::IntegrationTest
       name: "Krispy Drive",
       description: "Deep fried Klon clone",
       difficulty: 1,
-      user_id: @ripley.id,
+      submitter_id: @ripley.id,
       effect_type_ids: @overdrive.id
     }
   end
@@ -27,6 +27,7 @@ class CircuitsControllerTest < ActionDispatch::IntegrationTest
       post circuits_url, params: { circuit: @new_circuit }
     end
 
+    assert_equal User.find(@new_circuit[:submitter_id]), Circuit.last.submitter
     assert_redirected_to circuit_url(Circuit.last)
   end
 
@@ -63,7 +64,7 @@ class CircuitsControllerTest < ActionDispatch::IntegrationTest
     orig_submitter = @circuit.submitter
     patch circuit_url(@circuit), params: {
       circuit: {
-        user_id: @ash.id
+        submitter_id: @ash.id
       }
     }
 

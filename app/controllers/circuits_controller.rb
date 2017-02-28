@@ -70,13 +70,12 @@ class CircuitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def circuit_params
-      params.require(:circuit).permit(:name, :description, :difficulty)
+      params.require(:circuit).permit(:name, :description, :difficulty, :submitter_id)
     end
 
     def create_params
       p = circuit_params
-      extra_params = params.require(:circuit).permit(:user_id, :effect_type_ids)
-      p[:submitter] = User.find(extra_params[:user_id].to_i)
+      extra_params = params.require(:circuit).permit(:effect_type_ids)
       p[:effect_types] = []
       fx_ids = extra_params[:effect_type_ids].split(",")
       fx_ids.each do |fx_id|
@@ -88,11 +87,7 @@ class CircuitsController < ApplicationController
 
     def update_params
       p = circuit_params
-      extra_params = params.require(:circuit).permit(:user_id, :effect_type_ids)
-      
-      if !extra_params[:user_id].blank?
-        p[:submitter] = User.find(extra_params[:user_id])
-      end
+      extra_params = params.require(:circuit).permit(:effect_type_ids)
       
       if !extra_params[:effect_type_ids].blank?
         p[:effect_types] = []

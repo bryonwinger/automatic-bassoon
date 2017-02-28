@@ -1,5 +1,5 @@
 class Circuit < ApplicationRecord
-  belongs_to :submitter, class_name: "User", foreign_key: "user_id"
+  belongs_to :submitter, class_name: "User", foreign_key: "submitter_id"
   has_and_belongs_to_many :effect_types, -> { distinct }
   has_many :articles, -> { distinct }, as: :documentable
 
