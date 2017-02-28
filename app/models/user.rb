@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :circuits
+  has_many :circuits, foreign_key: :submitter_id
   has_many :articles
 
   # Favorites
