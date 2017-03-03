@@ -13,6 +13,7 @@
       <th>Difficulty</th>
       <th>Submitter</th>
       <th>Articles</th>
+      <th>Favorited</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,9 +27,13 @@
         <td><%= circuit.difficulty %></td>
         <td><%= circuit.submitter.email %></td>
         <td><%= circuit.articles.length %></td>
-        <td><%= link_to 'Show', circuit %></td>
-        <td><%= link_to 'Edit', edit_circuit_path(circuit) %></td>
-        <td><%= link_to 'Destroy', circuit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= circuit.favorited_users.length %></td>
+      </tr>
+      <tr>
+        <td>
+        <%= link_to 'Show', circuit %>
+        <%= link_to 'Edit', edit_circuit_path(circuit) %>
+        <%= link_to 'Destroy', circuit, method: :delete, data: { confirm: 'Are you sure?' } %>
       </tr>
     <% end %>
   </tbody>

@@ -17,24 +17,28 @@ lambert:
   first_name: Joan
   last_name: Lambert
   active: true
+  favorite_circuits: [digipeat]
 
 brett:
   email: s_brett@nostromo.net
   first_name: Samuel
   last_name: Brett
   active: true
+  favorite_circuits: [squeezie, greenbox]
 
 kane:
   email: g_kane@derelict.com
   first_name: Gilbert
   last_name: Kane
   active: true
+  favorite_circuits: [orangebox, vermin, swirly]
 
 ash:
   email: just_ash@nostromo.net
   first_name: Ash
   last_name: Ash
   active: true
+  favorite_circuits: [orangebox, fuzz]
 
 parker:
   email: d_parker@derelict.com
@@ -48,3 +52,5 @@ jones:
   first_name: Jones
   last_name: The Cat
   active: true
+  favorite_circuits: [greenbox]
+  

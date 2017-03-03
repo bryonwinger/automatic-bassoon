@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :add_favorite_circuit]
 
   # GET /users
   # GET /users.json
@@ -60,6 +60,27 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def add_favorite_circuit
+    circuit = Circuit.find(params[:circuit_id])
+    if circuit
+      respond_to do |format|
+        if @user.favorite_circuits << circuit
+          format.html { redirect_to @user, notice: 'Favorite added.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          flash[:alert] = @user.errors
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      msg = "Circuit not found."
+      flash[:alert] = msg
+      format.html { render :edit }
+      format.json { render json: msg, status: :not_found }
     end
   end
 

@@ -15,5 +15,17 @@
   <%= @user.last_name %>
 </p>
 
+
+<p>
+  <strong>Favorite Circuits:</strong>
+  <% if @user.favorite_circuits.empty? %>
+    <em>No favorites</em>
+  <% else %>
+    <% @user.favorite_circuits.each do |fave| %>
+      <%= render "favorite_circuit_card", circuit: fave %>
+    <% end %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
