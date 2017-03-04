@@ -4,6 +4,8 @@
 
 <h1>Circuits</h1>
 
+<%= link_to 'New Circuit', new_circuit_path %>
+
 <table>
   <thead>
     <tr>
@@ -21,7 +23,7 @@
   <tbody>
     <% @circuits.each do |circuit| %>
       <tr>
-        <td><%= circuit.name %></td>
+        <td><%= link_to circuit.name, circuit %></td>
         <td><%= circuit.description %></td>
         <td><%= circuit.effect_types.length %></td>
         <td><%= circuit.difficulty %></td>
@@ -29,15 +31,6 @@
         <td><%= circuit.articles.length %></td>
         <td><%= circuit.favorited_users.length %></td>
       </tr>
-      <tr>
-        <td>
-        <%= link_to 'Show', circuit %>
-        <%= link_to 'Edit', edit_circuit_path(circuit) %>
-        <%= link_to 'Destroy', circuit, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-<%= link_to 'New Circuit', new_circuit_path %>

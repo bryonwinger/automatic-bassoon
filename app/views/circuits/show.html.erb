@@ -15,5 +15,17 @@
   <%= @circuit.difficulty %>
 </p>
 
+<p>
+  <strong>Favorited:</strong>
+  <%= @circuit.favorited_users.length %>
+</p>
+
+<p>
+  <strong>Articles:</strong>
+  <%= @circuit.articles.length %>
+</p>
+
 <%= link_to 'Edit', edit_circuit_path(@circuit) %> |
+<%= link_to 'Destroy', @circuit, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
 <%= link_to 'Back', circuits_path %>

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test "required attrs" do
-    %w{first_name last_name email}.each do |attr|
+    %w{username first_name last_name email}.each do |attr|
       user = users(:lambert)
       user.__send__("#{attr}=", nil)
       assert_equal user.valid?, false
@@ -15,6 +15,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not new_user.valid?
     assert_not new_user.errors.empty?
     assert new_user.errors.keys.include? :email
+  end
+
+  test "username must be unique" do
+    new_user = User.new
+    new_user.username = @ripley.username
+    assert_not new_user.valid?
+    assert_not new_user.errors.empty?
+    assert new_user.errors.keys.include? :username
   end
 
   test "can have many favorites" do

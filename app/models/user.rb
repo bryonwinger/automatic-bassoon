@@ -9,4 +9,12 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, length: { in: 4..20 },
+    format: { with: /\A[-_.A-z0-9]+\z/,
+    message: "may only contain letters, numbers, hypens, underscores and periods"
+  }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

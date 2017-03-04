@@ -4,6 +4,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = @ripley
     @new_user = {
+      username: "newuser",
       email: "new_user@mail.net",
       first_name: "Firstly",
       last_name: "Lastly"
@@ -51,7 +52,23 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { email: @user.email, first_name: @user.first_name, last_name: @user.last_name } }
+    before = @user.email
+    new_email = "my_new_email@mail.net"
+
+    new_params = {
+      user: {
+        username: @user.username,
+        email: new_email,
+        first_name: @user.first_name,
+        last_name: @user.last_name
+      }
+    }
+
+    patch user_url(@user), params: new_params
+
+    @user.reload
+    assert_not_equal @user.email, before
+    assert_equal @user.email, new_email 
     assert_redirected_to user_url(@user)
   end
 
