@@ -21,9 +21,8 @@
   <% if @user.favorite_circuits.empty? %>
     <em>No favorites</em>
   <% else %>
-    <% @user.favorite_circuits.each do |fave| %>
-      <%= render "favorite_circuit_card", circuit: fave %>
-    <% end %>
+    <%= @user.favorite_circuits.length %>
+    - <%= link_to 'Show List', favorite_circuits_user_path(@user) %>
   <% end %>
 </p>
 

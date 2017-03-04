@@ -1,0 +1,3 @@
+<%= link_to circuit.name, circuit_path(circuit) %> 
+[<em><%= circuit.effect_types.map(&:name).join(" / ") %></em>]
+by <%= circuit.submitter.email %>

@@ -67,7 +67,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.find(@user.id).favorite_circuits.count') do
       post add_favorite_circuit_user_url(@user.id), params: { circuit_id: @squeezie.id }
     end
+  end
 
-    #assert_redirected_to user_url(User.last)
+  test "should show favorite circuits" do
+    get favorite_circuits_user_url(@user)
+    assert_response :success
   end
 end
