@@ -18,12 +18,20 @@
 </p>
 
 <p>
-  <strong>Favorite Circuits:</strong>
+  <%= link_to 'Favorite Circuits', favorite_circuits_user_path(@user) %>:
   <% if @user.favorite_circuits.empty? %>
     <em>No favorites</em>
   <% else %>
     <%= @user.favorite_circuits.length %>
-    - <%= link_to 'Show List', favorite_circuits_user_path(@user) %>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to 'Submitted Circuits', circuits_user_path(@user) %>:
+  <% if @user.circuits.empty? %>
+    <em>No submissions</em>
+  <% else %>
+    <%= @user.circuits.length %>
   <% end %>
 </p>
 

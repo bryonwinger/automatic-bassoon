@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Use :username insead of :id for routing
+  def to_param
+    username
+  end
+
   has_many :circuits, foreign_key: :submitter_id
   has_many :articles
 

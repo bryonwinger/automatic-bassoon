@@ -6,7 +6,7 @@
 <% else %>
   <% @user.favorite_circuits.each do |circuit| %>
     <p>
-      <%= render "favorite_circuit", circuit: circuit %>
+      <%= render "circuit_card", circuit: circuit %>
     </p>
   <% end %>
 <% end %>

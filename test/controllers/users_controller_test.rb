@@ -36,8 +36,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert flash[:alert]
-    assert flash[:alert].messages.keys.include? :email 
-    assert flash[:alert].full_messages.first.include? "taken" 
+    assert flash[:alert].messages.keys.include? :email
+    assert flash[:alert].full_messages.first.include? "taken"
     # assert_redirected_to new_user_url(User.last)
   end
 
@@ -68,7 +68,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     @user.reload
     assert_not_equal @user.email, before
-    assert_equal @user.email, new_email 
+    assert_equal @user.email, new_email
     assert_redirected_to user_url(@user)
   end
 
@@ -82,12 +82,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should add favorite circuit" do
     assert_difference('User.find(@user.id).favorite_circuits.count') do
-      post add_favorite_circuit_user_url(@user.id), params: { circuit_id: @squeezie.id }
+      post add_favorite_circuit_user_url(@user), params: { circuit_id: @squeezie.id }
     end
   end
 
   test "should show favorite circuits" do
     get favorite_circuits_user_url(@user)
+    assert_response :success
+  end
+
+  test "should show user circuits" do
+    get circuits_user_url(@user)
     assert_response :success
   end
 end

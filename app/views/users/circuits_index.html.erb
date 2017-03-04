@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Submitted Circuits</h3>
+<% if @user.circuits.empty? %>
+  <em>No circuits</em>
+<% else %>
+  <% @user.circuits.each do |circuit| %>
+    <p>
+      <%= render "circuit_card", circuit: circuit %>
+    </p>
+  <% end %>
+<% end %>
+
+<br>
+<%= link_to 'Back', user_path(@user) %>
