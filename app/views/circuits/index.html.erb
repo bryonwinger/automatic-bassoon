@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Home', root_path %>
-<br>
+<div class="container">
+  <%= link_to 'Home', root_path %>
 
-<h1>Circuits</h1>
+  <h1>Circuits</h1>
 
-<%= link_to 'New Circuit', new_circuit_path, class: "btn btn-primary" %>
+  <%= link_to 'New Circuit', new_circuit_path, class: "btn btn-primary" %>
+  <hr>
 
-<% @circuits.each do |circuit| %>
-  <%= render "summary", circuit: circuit %>
-<% end %>
+  <% @circuits.each do |circuit| %>
+    <%= render "summary", circuit: circuit %>
+    <hr>
+  <% end %>
+</div>

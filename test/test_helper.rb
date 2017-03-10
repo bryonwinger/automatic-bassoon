@@ -27,5 +27,13 @@ class ActiveSupport::TestCase
     @fuzz = effect_types(:fuzz)
     @compression = effect_types(:compression)
     @delay = effect_types(:delay)
+
+    @new_circuit_params = {
+      name: "Krispy Drive",
+      description: "Deep fried Klon clone",
+      difficulty: 1,
+      submitter_id: @ripley.id,
+      effect_type_ids: @overdrive.id
+    }
   end
 end

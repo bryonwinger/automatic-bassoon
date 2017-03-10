@@ -1,20 +1,39 @@
 <section>
-  <h3><%= circuit.name %></h3>
-  <span>
-    <div>
-      submitted by <%= link_to circuit.submitter.username, user_path(circuit.submitter) %>
+  <div class="row">
+    <div class="col-8">
+      <strong>
+        <%= link_to circuit.name, circuit_path(circuit) %>
+      </strong>
+      <small><em>
+        submitted by
+        <%= link_to circuit.submitter.username, user_path(circuit.submitter) %>
+      </em></small>
     </div>
-    <div>Difficulty: <%= circuit.difficulty %></div>
-    <div>Stars: <%= circuit.favorited_users.length %></div>
-  </span>
-  <small><%= circuit.description %></small>
-  
-  <hr>
+    <div class="col-2">
+      <small>
+        Difficulty: <%= circuit.difficulty %>
+      </small>
+    </div>
+    <div class="col-2">
+      <small>
+        Stars: <%= circuit.favorited_users.length %>
+      </small>
+    </div>
+  </div>
 
-  <% circuit.articles.each do |article| %>
-    <article>
-      <h5><%= article.title %></h5>
-      <p><%= article.body %></p>
-    </article>
+  <div class="row">
+    <div class="col">
+      <em><%= circuit.description %></em>
+    </div>
+  </div>
+
+  <% if circuit.article %>
+    <div class="row">
+      <div class="col">
+        <article>
+          <small><%= article_summary(circuit.article) %></small>
+        </article>
+      </div>
+    </div>
   <% end %>
 </section>

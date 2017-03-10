@@ -45,16 +45,22 @@ class CircuitTest < ActiveSupport::TestCase
     assert_equal num, @orangebox.effect_types.count
   end
 
-  test "can add articles" do
-    num = @vermin.articles.count
-    @vermin.articles << @article_one
-    assert_equal num + 1, @vermin.articles.count
+  test "can remove article" do
+    @vermin.article = nil
+    assert_nil @vermin.article
+    assert @vermin.valid?
   end
 
-  test "articles are distinct" do
-    @vermin.articles << @article_one
-    num = @vermin.articles.count
-    @vermin.articles << @article_one
-    assert_equal num, @vermin.articles.count
+  test "can add article" do
+    circuit = Circuit.new(@new_circuit_params)
+    circuit.article = @article_one
+    assert circuit.article = @article_one
   end
+
+  # test "articles are distinct" do
+    # @vermin.articles << @article_one
+    # num = @vermin.articles.count
+    # @vermin.articles << @article_one
+    # assert_equal num, @vermin.articles.count
+  # end
 end

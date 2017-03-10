@@ -3,7 +3,7 @@ require 'test_helper'
 class CircuitsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @circuit = @squeezie
-    @new_circuit = {
+    @new_circuit_params = {
       name: "Krispy Drive",
       description: "Deep fried Klon clone",
       difficulty: 1,
@@ -24,10 +24,10 @@ class CircuitsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create circuit" do
     assert_difference('Circuit.count') do
-      post circuits_url, params: { circuit: @new_circuit }
+      post circuits_url, params: { circuit: @new_circuit_params }
     end
 
-    assert_equal User.find(@new_circuit[:submitter_id]), Circuit.last.submitter
+    assert_equal User.find(@new_circuit_params[:submitter_id]), Circuit.last.submitter
     assert_redirected_to circuit_url(Circuit.last)
   end
 
