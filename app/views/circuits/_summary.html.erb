@@ -1,0 +1,20 @@
+<section>
+  <h3><%= circuit.name %></h3>
+  <span>
+    <div>
+      submitted by <%= link_to circuit.submitter.username, user_path(circuit.submitter) %>
+    </div>
+    <div>Difficulty: <%= circuit.difficulty %></div>
+    <div>Stars: <%= circuit.favorited_users.length %></div>
+  </span>
+  <small><%= circuit.description %></small>
+  
+  <hr>
+
+  <% circuit.articles.each do |article| %>
+    <article>
+      <h5><%= article.title %></h5>
+      <p><%= article.body %></p>
+    </article>
+  <% end %>
+</section>

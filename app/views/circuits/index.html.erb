@@ -1,36 +1,11 @@
+<p id="notice"><%= notice %></p>
 <%= link_to 'Home', root_path %>
 <br>
-<p id="notice"><%= notice %></p>
 
 <h1>Circuits</h1>
 
-<%= link_to 'New Circuit', new_circuit_path %>
+<%= link_to 'New Circuit', new_circuit_path, class: "btn btn-primary" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Types</th>
-      <th>Difficulty</th>
-      <th>Submitter</th>
-      <th>Articles</th>
-      <th>Favorited</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @circuits.each do |circuit| %>
-      <tr>
-        <td><%= link_to circuit.name, circuit %></td>
-        <td><%= circuit.description %></td>
-        <td><%= circuit.effect_types.length %></td>
-        <td><%= circuit.difficulty %></td>
-        <td><%= circuit.submitter.email %></td>
-        <td><%= circuit.articles.length %></td>
-        <td><%= circuit.favorited_users.length %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @circuits.each do |circuit| %>
+  <%= render "summary", circuit: circuit %>
+<% end %>
